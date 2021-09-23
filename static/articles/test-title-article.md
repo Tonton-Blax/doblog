@@ -1,7 +1,7 @@
 ---
 layout: articles
 slug: test-article
-canonical: test-article-canonique
+canonical: test-article-canonique2
 meta: Test meta description
 title: Ceci est un titre
 h1: Ceci est un H1
