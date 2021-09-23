@@ -4,7 +4,11 @@ const config = {
 		"./src/**/*.{html,js,svelte,ts}",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: { 
+				sans: ["Poppins"] 
+			}
+		},
 	},
 	plugins: [],
 };
