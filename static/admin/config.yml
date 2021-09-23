@@ -7,18 +7,18 @@ media_folder: "static/img/uploads" # Media files will be stored in the repo unde
 public_folder: "../img/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
-  - name: "produits" # Used in routes, e.g., /admin/collections/blog
-    label: "Produits" # Used in the UI
-    folder: "static/produits" # The path to the folder where our blog posts are stored
+  - name: "articles" # Used in routes, e.g., /admin/collections/blog
+    label: "articles" # Used in the UI
+    folder: "static/articles" # The path to the folder where our blog posts are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document
-      - { label: "Layout", name: "layout", widget: "hidden", default: "produits"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "articles"}
       - { label: "Slug", name: "slug", widget: "string", hint: "IMPORTANT : l'adresse de la page, en minuscule, sans espaces!" }
-      - { label: "Titre général", name: "title", widget: "string"}
-      - { label: "Sous-titre général", name: "subtitle", widget: "string"}
-      - { label: "Mots-clé", name: "keywords", widget: "select", options: ["Lavabos chirurgicaux", "Paillasses sèches et humides en Kerrock", "Postes de change en Kerrock", "Paillasses endoscopiques", "Mobilier sanitaire"], default: ["Mobilier sanitaire"]}
-      - { label: "Famille de produit", name: "famille", widget: "select", options: ["normal", "bloc_1_poste", "bloc_2_postes", "bloc_3_postes" , "alize_1_poste", "ocea_1_poste", "normal"], default: ["normal"] }
+      - { label: "url canonique", name: "canonical", widget: "string", hint: "Laisser vide si identique à slug" }
+      - { label: "meta description", name: "meta", widget: "string", hint: "La meta quoi" }
+      - { label: "balise title", name: "title", widget: "string"}
+      - { label: "h1", name: "h1", widget: "string"}
       - { label: "Image de couverture", name: "thumbnail", widget: "image"}
       - { label: "Décalage de l'image de couverture", name: "decalage", widget: "number", default: 0, value_type: "int", min: -100, max: 100, step: 1 }
       - { label: "Date de publication", name: "date", widget: "datetime"}
@@ -27,33 +27,33 @@ collections:
         name: 'contenu'
         widget: 'list'
         types:
-          - label: "Titre de section"
-            name: "sectionmeta"
+          - label: "Chapo"
+            name: "chapo"
+            widget: object
+            fields: 
+              - { label: "Contenu du chapo", name: "chapocontent", widget: text, hint : "Optionnel"}        
+          - label: "Titre de section (h2)"
+            name: "headings"
             widget: object
             default: 'Titre de la section'
             fields: 
-              - { label : "Ligne 1", name : "sectiontitle", widget : string, hint : 'Ligne 1 du titre de section sur FOND bleu'}
-              - { label : "Ligne 2", name : "sectionsubtitle", widget : string, hint : 'Ligne 2 du titre de section sur FOND bleu'}
-          - label: "Intertitre grand"
-            name: "intertitrebigobject"
+              - { label : "Un h2", name : "h2", widget : string, hint : 'Titre de section (h2)'}
+          - label: "Titre de section (h3)"
+            name: "headings"
             widget: object
+            default: 'Titre de la section'
             fields: 
-              - { label: "Intertitre grand", name: "interbig", widget: string, hint : "Interitre bleu SANS fond (grand)" }
-          - label: "Intertitre petit"
-            name: "intertitresmallobject"
-            widget: object
-            fields: 
-              - { label: "Intertitre petit", name: "intersmall", widget: string, hint : "Interitre bleu SANS fond (petit)" }
+              - { label : "Un h3", name : "h3", widget : string, hint : 'Titre (ou sous-titre) de section (h3)'}
           - label: "Bloc de texte"
             name: "textblock"
             widget: object
             fields: 
               - { label: "Corps", name: "body", widget: "markdown" }
-          - label: "Le +"
-            name: "leplusobject"
+          - label: "Encart"
+            name: "encart"
             widget: object
             fields: 
-              - { label: "Le +", name: "leplus", widget: text, hint : "ne pas écire 'le + ', il sera généré automatiquement"}
+              - { label: "Contenu de l'encart", name: "encartcontent", widget: text, hint : "Optionnel"}
           - label: "Images"
             name: "imagesobject"
             widget: object
