@@ -31,15 +31,15 @@ collections:
             name: "chapo"
             widget: object
             fields: 
-              - { label: "Contenu du chapo", name: "chapocontent", widget: text, hint : "Optionnel"}        
+              - { label: "Contenu du chapo", name: "chapocontent", widget: text, hint : "Optionnel"}
           - label: "Titre de section (h2)"
-            name: "headings"
+            name: "headingh2"
             widget: object
             default: 'Titre de la section'
             fields: 
               - { label : "Un h2", name : "h2", widget : string, hint : 'Titre de section (h2)'}
           - label: "Titre de section (h3)"
-            name: "headings"
+            name: "headingh3"
             widget: object
             default: 'Titre de la section'
             fields: 
