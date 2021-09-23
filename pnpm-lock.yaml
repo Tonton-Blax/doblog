@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@fontsource/fira-mono': ^4.5.0
   '@lukeed/uuid': ^2.0.0
-  '@sveltejs/adapter-static': ^1.0.0-next.19
+  '@sveltejs/adapter-netlify': ^1.0.0-next.31
   '@sveltejs/kit': next
   autoprefixer: ^10.3.4
   cookie: ^0.4.1
@@ -24,7 +24,7 @@ dependencies:
   marked: 3.0.4
 
 devDependencies:
-  '@sveltejs/adapter-static': 1.0.0-next.19
+  '@sveltejs/adapter-netlify': 1.0.0-next.31
   '@sveltejs/kit': 1.0.0-next.171_svelte@3.42.6
   autoprefixer: 10.3.5_postcss@8.3.7
   cssnano: 5.0.8_postcss@8.3.7
@@ -60,6 +60,10 @@ packages:
   /@fontsource/fira-mono/4.5.0:
     resolution: {integrity: sha512-KE+d3wmgq/YKM0BqgUF7p2yeBNi805Nfof1lC1wJ7E9i2EWoC363sGdKG+MQBVm+ei3GYZu+Bo8Xha1w1pkB7g==}
     dev: false
+
+  /@iarna/toml/2.2.5:
+    resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
+    dev: true
 
   /@lukeed/csprng/1.0.0:
     resolution: {integrity: sha512-ruuGHsnabmObBdeMg3vKdGRmh06Oog3eFpf/Tk6X0kDSJDpJTDCj2dqdp1+0VjzIUgHlFF9GBm7uFqfYhhdX9g==}
@@ -102,8 +106,11 @@ packages:
       picomatch: 2.3.0
     dev: true
 
-  /@sveltejs/adapter-static/1.0.0-next.19:
-    resolution: {integrity: sha512-uZNJNVGCdiLo1XnMbezlAUsNSzB36oqtXvaUiDmy+Lv0jKU7ZukDQnJ0zWAatdqXl9ETlG4YyTWI/i7E8nmLpQ==}
+  /@sveltejs/adapter-netlify/1.0.0-next.31:
+    resolution: {integrity: sha512-MmN8OLXVLmc51MpoSXJyd4M+MSO3z2nI+rmMy0UklQ4iwYrKXBj2fz53KVpJkdY+36B0NrQipNHYT8yW7u/4EA==}
+    dependencies:
+      '@iarna/toml': 2.2.5
+      esbuild: 0.12.29
     dev: true
 
   /@sveltejs/kit/1.0.0-next.171_svelte@3.42.6:
