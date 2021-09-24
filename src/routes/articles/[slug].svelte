@@ -31,10 +31,13 @@
 	import { onMount } from 'svelte'
  
 	let lazyloadInstance;
+	let refresh;
+
 	if (browser) {
 		lazyloadInstance = new lazyload();
-		window.onbeforeunload = lazyloadInstance.update();
+		window.onbeforeunload = ()=> {refresh=true; return undefined};
 	}
+	$: if (refresh) {console.log("refresh");lazyloadInstance.update();refresh=false}
 	onMount(()=>lazyloadInstance.update());
 	export let post;
 
