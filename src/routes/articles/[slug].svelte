@@ -28,11 +28,13 @@
 	import { browser } from '$app/env';
 	import { toLowRes } from '$lib/utils';
 	import lazyload from 'vanilla-lazyload';
+	import { onMount } from 'svelte'
  
 	let lazyloadInstance;
 	if (browser) {
 		lazyloadInstance = new lazyload();
 	}
+	onMount(()=>lazyloadInstance.update());
 	export let post;
 
 </script>
@@ -89,7 +91,7 @@
 		</div>
 
 		<div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-			<img class="lazy w-full h-full lg:max-w-2xl pl-8" src="{toLowRes(post.contenu[3].images[0])}" alt="Catalogue-pana.svg">
+			<img class="lazy w-full h-full lg:max-w-2xl pl-8" data-src="{toLowRes(post.contenu[3].images[0])}" alt="Catalogue-pana.svg">
 		</div>
 	</div>
 </div>
