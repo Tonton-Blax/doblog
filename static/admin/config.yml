@@ -1,10 +1,9 @@
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
-
-publish_mode: simple #editorial_workflow Allows you to save drafts before publishing them
-media_folder: "static/img/uploads" # Media files will be stored in the repo under static/images/uploads
-public_folder: "../img/uploads" # The src attribute for uploaded media will begin with /images/uploads
+  publish_mode: simple #editorial_workflow Allows you to save drafts before publishing them
+  media_folder: "static/img/uploads" # Media files will be stored in the repo under static/images/uploads
+  public_folder: "../img/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
   - name: "articles" # Used in routes, e.g., /admin/collections/blog
@@ -19,11 +18,18 @@ collections:
       - { label: "meta description", name: "meta", widget: "string", hint: "La meta quoi" }
       - { label: "balise title", name: "title", widget: "string"}
       - { label: "h1", name: "h1", widget: "string"}
-      - { label: "Image de couverture", name: "thumbnail", widget: "image"}
+      - label: Image de couverture
+        name: featured_image
+        widget: object
+        fields:
+          - {name: thumbnail, label: Image, widget: image}
+          - {name: alt, label: Balise alt, widget: string}
+          - {name: legend, label: Légende, widget: string}
+      #- { label: "Image de couverture", name: "thumbnail", widget: "image"}
       - { label: "Décalage de l'image de couverture", name: "decalage", widget: "number", default: 0, value_type: "int", min: -100, max: 100, step: 1 }
       - { label: "Date de publication", name: "date", widget: "datetime"}
       - { label: "Tableau (optionnel, pour chaque ligne, séparer les colonnes par des virgules)", name: "tableau", widget: "list", field: {label: ligne, name: ligne, widget: string} }
-      - label: 'Le contenu'
+      - label: 'Section'
         name: 'contenu'
         widget: 'list'
         types:
