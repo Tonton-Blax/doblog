@@ -30,7 +30,6 @@
 	import lazyload from 'vanilla-lazyload';
 	import { onMount } from 'svelte'
 	export let post;
-
 	let lazyloadInstance;
 	let refresh;
 
@@ -53,79 +52,64 @@
 	<title>{ post.title }</title>
 </svelte:head>
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="relative bg-white overflow-hidden">
-	<div class="max-w-7xl mx-auto">
-	  <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-		<svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-		  <polygon points="50,0 100,0 50,100 0,100" />
-		</svg>
-  
-		<div>
-		  <div class="relative pt-6 px-4 sm:px-6 lg:px-8" />
-		</div>
-  
-		<main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-		  <div class="sm:text-center lg:text-left">
-			<h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-			  <span class="block xl:inline">{post.h1.split(' ').filter((_,i) => i < 4).join(' ')}</span>
-			  <span class="block text-indigo-600 xl:inline">{post.h1.split(' ').filter((_,i) => i >= 4).join(' ')}</span>
-			</h1>
-			<p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-			  {post.contenu[0].chapocontent}
-			</p>
-			<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-			  <div class="rounded-md shadow">
-				<a href="/about" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-				  Contactez-moi wesh
-				</a>
-			  </div>
-			</div>
-		  </div>
-		</main>
-	  </div>
+<div class="relative bg-indigo-800">
+	<div class="absolute inset-0">
+	  <img class="lazy w-full h-full object-cover" 
+	  data-src="{toLowRes(post.featured_image.thumbnail, 800)}" 
+	  alt="{post.featured_image.alt}"
+	  >
+	  <div class="absolute inset-0 bg-indigo-800 mix-blend-multiply" aria-hidden="true"></div>
 	</div>
-	<div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-	  <img class="lazy h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" data-src="{toLowRes(post.featured_image.thumbnail, 800)}" alt="">
+	<div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+	  <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">{post.h1}</h1>
+	  <p class="mt-6 text-xl text-indigo-100 max-w-3xl"> {post.contenu[0].chapocontent}</p>
 	</div>
   </div>
-
-
-  <section class=" bg-blueGray-200 -mt-24">
-	<div class="container mx-auto px-4">
-	  <div class="flex flex-wrap">
-		<div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-		  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-1 shadow-lg rounded-lg">
-			<div class="px-4 flex-auto">
-			</div>
-		  </div>
+  
+  <secetion class="bg-white overflow-hidden">
+	<div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+	  <div class="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen"></div>
+	  <div class="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
+		<div>
+		  <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">{post.contenu.find(i => i['h2'])['h2']}</h2>
+		  <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{post.contenu.find(i => i['h3'])['h3']}</h3>
 		</div>
 	  </div>
-	  <div class="flex flex-wrap items-center mt-16">
-		<div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-		  <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-			<i class="fas fa-user-friends text-xl"></i>
+	  <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
+		<div class="relative lg:row-start-1 lg:col-start-2">
+		  <svg class="hidden lg:block absolute top-0 right-0 -mt-20 -mr-20" width="404" height="384" fill="none" viewBox="0 0 404 384" aria-hidden="true">
+			<defs>
+			  <pattern id="de316486-4a29-4312-bdfc-fbce2132a2c1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+				<rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+			  </pattern>
+			</defs>
+			<rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
+		  </svg>
+		  <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
+			<figure>
+			  <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
+				<img class="lazy rounded-lg shadow-lg object-cover object-center" 
+					alt="{post.contenu.find(i => i['images'])['images']['0']['alt_section']}"
+					data-src="{toLowRes(post.contenu[3].images[0].image_section)}" 
+					width="1184" height="1376"
+				>
+			  </div>
+			  <figcaption class="mt-3 flex text-sm text-gray-500">
+				<!-- Heroicon name: solid/camera -->
+				<svg class="flex-none w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+				  <path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+				</svg>
+				<span class="ml-2">{post.contenu.find(i => i['images'])['images']['0']['legend_section']}</span>
+			  </figcaption>
+			</figure>
 		  </div>
-		  <h2 class="text-3xl mb-2 font-extrabold leading-normal text-indigo-600">
-			{post.contenu[1].h2}
-		  </h2>
-		  <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-			{@html post.contenu[2].body}
-		  </p>
-		  <!-- <a href="../index.html" class="font-bold text-blueGray-700 mt-8">Check Notus JS!</a> -->
 		</div>
-		<div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-		  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-2 shadow-lg rounded-lg bg-pink-500">
-			<img alt="{post.contenu[3].images[0].alt_section}" data-src="{toLowRes(post.contenu[3].images[0].image_section)}" class="lazy w-full align-middle rounded-t-lg">
-			<blockquote class="relative p-8 mb-4">
-			<svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="absolute left-0 w-full block h-95-px -top-94-px">
-					  <polygon points="-30,95 583,95 583,65" class="text-pink-500 fill-current"></polygon>
-					</svg>
-			  <h4 class="text-xl font-bold text-white">
-				{post.contenu[3].images[0].legend_section}
-			  </h4>
-			</blockquote>
+		<div class="mt-8 lg:mt-0">
+		  <div class="text-base max-w-prose mx-auto lg:max-w-none">
+			{@html post.contenu.find(i=>i['body'])['body']}
 		  </div>
+		  <div class="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1" />
 		</div>
 	  </div>
 	</div>
-  </section>
+  </secetion>
