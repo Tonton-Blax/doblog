@@ -33,6 +33,7 @@
 	let lazyloadInstance;
 	if (browser) {
 		lazyloadInstance = new lazyload();
+		window.onbeforeunload = lazyloadInstance.update();
 	}
 	onMount(()=>lazyloadInstance.update());
 	export let post;
