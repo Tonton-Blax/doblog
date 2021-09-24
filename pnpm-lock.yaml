@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@fontsource/fira-mono': ^4.5.0
   '@fontsource/poppins': ^4.5.0
   '@lukeed/uuid': ^2.0.0
   '@sveltejs/adapter-static': ^1.0.0-next.19
@@ -20,7 +19,6 @@ specifiers:
   vanilla-lazyload: ^17.5.0
 
 dependencies:
-  '@fontsource/fira-mono': 4.5.0
   '@fontsource/poppins': 4.5.0
   '@lukeed/uuid': 2.0.0
   cookie: 0.4.1
@@ -62,10 +60,6 @@ packages:
       chalk: 2.4.2
       js-tokens: 4.0.0
     dev: true
-
-  /@fontsource/fira-mono/4.5.0:
-    resolution: {integrity: sha512-KE+d3wmgq/YKM0BqgUF7p2yeBNi805Nfof1lC1wJ7E9i2EWoC363sGdKG+MQBVm+ei3GYZu+Bo8Xha1w1pkB7g==}
-    dev: false
 
   /@fontsource/poppins/4.5.0:
     resolution: {integrity: sha512-RqgMIQqKHWNH3IUj+a0MAhlb4g5fftsXRTJ2bauefBmfM8Ja5q+qQZjKwyB/iCc+paJD320zFnLJ8G+y1ZyemQ==}
