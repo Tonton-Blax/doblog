@@ -1,5 +1,6 @@
 ---
 layout: articles
+thematique: pingouins
 slug: test-article
 canonical: test-article-canonique2
 meta: Test meta description
