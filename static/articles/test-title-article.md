@@ -4,11 +4,15 @@ slug: test-article
 canonical: test-article-canonique2
 meta: Test meta description
 title: Ceci est un titre
-h1: Ceci est un H1
-thumbnail: ../img/uploads/pingouin.jpg
-decalage: 0
+h1: Ceci est un H1 de sa mère
+featured_image:
+  thumbnail: ../img/uploads/pingouin.jpg
+  alt: Ceci est un pingouin
+  legend: La légende du pingouin
+decalage: 50
 date: 2021-09-23T19:59:45.953Z
 tableau: []
+thumbnail: ../img/uploads/pingouin.jpg
 contenu:
   - type: chapo
     chapocontent: >-
@@ -33,7 +37,9 @@ contenu:
       hendrerit.
   - type: imagesobject
     images:
-      - ../img/uploads/chat.jpg
+      - image_section: ../img/uploads/chat.jpg
+        alt_section: Ceci est une tête de chat
+        legend_section: La légende du chat
   - type: headingh3
     h3: Wouhouhou un h3 c'est pas trop fou ça ?
   - type: textblock
