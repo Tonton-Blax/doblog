@@ -29,7 +29,8 @@
 	import { toLowRes } from '$lib/utils';
 	import lazyload from 'vanilla-lazyload';
 	import { onMount } from 'svelte'
- 
+	export let post;
+
 	let lazyloadInstance;
 	let refresh;
 
@@ -37,9 +38,14 @@
 		lazyloadInstance = new lazyload();
 		window.onbeforeunload = ()=> {refresh=true; return undefined};
 	}
-	$: if (refresh) {console.log("refresh");lazyloadInstance.update();refresh=false}
+	
+	$: if (refresh) {
+		lazyloadInstance.update();
+		refresh=false
+	}
+	
 	onMount(()=>lazyloadInstance.update());
-	export let post;
+
 
 </script>
 
@@ -79,23 +85,47 @@
 	  </div>
 	</div>
 	<div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-	  <img class="lazy h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" data-src="{toLowRes(post.thumbnail, 800)}" alt="">
+	  <img class="lazy h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" data-src="{toLowRes(post.featured_image.thumbnail, 800)}" alt="">
 	</div>
   </div>
 
-  
-  <div class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-	<div class="items-center lg:flex">
-		<div class="w-full lg:w-1/2">
-			<div class="lg:max-w-lg">
-				<h2 class="text-2xl font-semibold text-indigo-600 dark:text-white lg:text-4xl">{post.contenu[1].h2}</h2>
-				<p class="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">{@html post.contenu[2].body}</p>
-				<!-- <button class="w-full px-3 py-2 mt-6 text-xs font-medium text-white uppercase transition-colors duration-200 transform bg-indigo-600 rounded-md lg:w-auto hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">Shop Now</button> -->
-			</div>
-		</div>
 
-		<div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-			<img class="lazy w-full h-full lg:max-w-2xl pl-8" data-src="{toLowRes(post.contenu[3].images[0])}" alt="Catalogue-pana.svg">
+  <section class=" bg-blueGray-200 -mt-24">
+	<div class="container mx-auto px-4">
+	  <div class="flex flex-wrap">
+		<div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+		  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-1 shadow-lg rounded-lg">
+			<div class="px-4 flex-auto">
+			</div>
+		  </div>
 		</div>
+	  </div>
+	  <div class="flex flex-wrap items-center mt-16">
+		<div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+		  <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+			<i class="fas fa-user-friends text-xl"></i>
+		  </div>
+		  <h2 class="text-3xl mb-2 font-extrabold leading-normal text-indigo-600">
+			{post.contenu[1].h2}
+		  </h2>
+		  <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+			{@html post.contenu[2].body}
+		  </p>
+		  <!-- <a href="../index.html" class="font-bold text-blueGray-700 mt-8">Check Notus JS!</a> -->
+		</div>
+		<div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+		  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-2 shadow-lg rounded-lg bg-pink-500">
+			<img alt="{post.contenu[3].images[0].alt_section}" data-src="{toLowRes(post.contenu[3].images[0].image_section)}" class="lazy w-full align-middle rounded-t-lg">
+			<blockquote class="relative p-8 mb-4">
+			<svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="absolute left-0 w-full block h-95-px -top-94-px">
+					  <polygon points="-30,95 583,95 583,65" class="text-pink-500 fill-current"></polygon>
+					</svg>
+			  <h4 class="text-xl font-bold text-white">
+				{post.contenu[3].images[0].legend_section}
+			  </h4>
+			</blockquote>
+		  </div>
+		</div>
+	  </div>
 	</div>
-</div>
+  </section>
