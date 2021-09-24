@@ -27,11 +27,15 @@
 <script>
 	import { browser } from '$app/env';
 	import { toLowRes } from '$lib/utils';
+	import SvelteSeo from "svelte-seo";
 	import lazyload from 'vanilla-lazyload';
 	import { onMount } from 'svelte'
+	import { page } from '$app/stores';
 	export let post;
 	let lazyloadInstance;
 	let refresh;
+
+	console.log(post)
 
 	if (browser) {
 		lazyloadInstance = new lazyload();
@@ -48,9 +52,12 @@
 
 </script>
 
-<svelte:head>
-	<title>{ post.title }</title>
-</svelte:head>
+<SvelteSeo
+  title="{post.title}"
+  description="{post.meta}"
+  canonical="https://{$page.host}/{post.canonical || post.slug}"
+  jsonLd={post.jsonLd || undefined}
+/>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="relative bg-indigo-800">
 	<div class="absolute inset-0">
