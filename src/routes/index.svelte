@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import BlogBloc from '$lib/BlogBloc.svelte';
 </script>
 
 <svelte:head>
@@ -11,6 +10,5 @@
 </svelte:head>
 
 <section>
-	
-	<BlogBloc />
+RIEN	
 </section>

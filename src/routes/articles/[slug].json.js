@@ -36,8 +36,10 @@ export async function get({ params }) {
 	const contentImages = Object.values(data.contenu).filter(d => d.type==='imagesobject').map(i => i.images).flat().map(i=>i.image_section);
 	if (contentImages);
 		processImages(contentImages);
-	if (data?.featured_image?.thumbnail)
+	if (data?.featured_image?.thumbnail) {
 		processImages(data.featured_image.thumbnail, 800);
+		processImages(data.featured_image.thumbnail, 400);
+	}
 	return {
 		body: {
 			html, ...data

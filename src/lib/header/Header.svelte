@@ -19,7 +19,7 @@
 				 <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
 					<li class:active={$page.path === '/'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" sveltekit:prefetch href="/">Contact</a></li>
 					<li class:active={$page.path === '/about'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" sveltekit:prefetch href="/about">Mes références</a></li>
-					<li class:active={$page.path === '/todos'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" sveltekit:prefetch href="/articles">Articles</a></li>
+					<li class:active={$page.path === '/todos'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/articles">Articles</a></li>
 				 </ul>
 			  </nav>
 		   </div>

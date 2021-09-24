@@ -10,10 +10,17 @@ const getAllPosts = () => {
 				path.resolve(`static/articles/`, fileName),
 				'utf-8'
 			);
-			return { title: grayMatter(file).data.title, slug };
+			const mattered = grayMatter(file);
+			return { 
+				title: mattered.data.title, 
+				slug, 
+				img : mattered.data.featured_image.thumbnail, 
+				h1 :  mattered.data.h1,
+				date : mattered.data.date,
+				thematique : mattered.data.thematique
+			};
 		});
 	} catch (e) {
-		console.log("erreur lol", e)
 		if (e.code == 'ENOENT') {
 			return false;
 		}

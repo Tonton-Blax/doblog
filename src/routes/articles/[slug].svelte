@@ -34,9 +34,6 @@
 	export let post;
 	let lazyloadInstance;
 	let refresh;
-
-	console.log(post)
-
 	if (browser) {
 		lazyloadInstance = new lazyload();
 		window.onbeforeunload = ()=> {refresh=true; return undefined};
@@ -97,7 +94,7 @@
 			  <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
 				<img class="lazy rounded-lg shadow-lg object-cover object-center" 
 					alt="{post.contenu.find(i => i['images'])['images']['0']['alt_section']}"
-					data-src="{toLowRes(post.contenu[3].images[0].image_section)}" 
+					data-src="{toLowRes(post.contenu.find(i => i['images'])['images']['0']['image_section'])}" 
 					width="1184" height="1376"
 				>
 			  </div>
