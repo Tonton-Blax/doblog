@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import grayMatter from 'gray-matter';
 import marked from 'marked';
+import sharp from 'sharp'
 
 const getContent = (fileName) => {
 	try {
@@ -32,10 +33,32 @@ export async function get({ params }) {
 
 	const { data, content } = grayMatter(file);
 	const html = marked(content, { renderer });
-
+	const contentImages = Object.values(data.contenu).filter(d => d.type==='imagesobject').map(i => i.images).flat();
+	processImages(contentImages);
+	processImages(data.thumbnail, 800);
 	return {
 		body: {
 			html, ...data
 		}
 	};
+}
+
+
+async function processImages(images, res = 400) {
+	if (!Array.isArray(images))
+		images = [images];
+
+	for (const image of images) {
+		const fileExt = (`${image.substring(image.lastIndexOf(".")+1)}`);
+		const filePath = image.substring(image.length-fileExt.length-1, 3)
+		const prefixPath = filePath.substring(0, filePath.lastIndexOf("/")+1);
+		const fileName = filePath.split(prefixPath).pop();
+
+		if (!fs.existsSync(path.resolve('static/img/uploads', `${fileName}__${res}.${fileExt}`))) {
+			await sharp(path.resolve('static/img/uploads', `${fileName}.${fileExt}`))
+				.resize({ width: res })
+				.jpeg({ quality: 70 })
+				.toFile(path.resolve('static/img/uploads', `${fileName}__${res}.${fileExt}`));
+		}
+	}
 }

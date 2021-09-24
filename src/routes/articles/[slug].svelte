@@ -25,9 +25,15 @@
 </script>
 
 <script>
-
+	import { browser } from '$app/env';
+	import { toLowRes } from '$lib/utils';
+	import lazyload from 'vanilla-lazyload';
+ 
+	let lazyloadInstance;
+	if (browser) {
+		lazyloadInstance = new lazyload();
+	}
 	export let post;
-	console.log(post);
 
 </script>
 
@@ -67,7 +73,7 @@
 	  </div>
 	</div>
 	<div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-	  <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="{post.thumbnail}" alt="">
+	  <img class="lazy h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" data-src="{toLowRes(post.thumbnail, 800)}" alt="">
 	</div>
   </div>
 
@@ -83,7 +89,7 @@
 		</div>
 
 		<div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-			<img class="w-full h-full lg:max-w-2xl pl-8" src="{post.contenu[3].images[0]}" alt="Catalogue-pana.svg">
+			<img class="lazy w-full h-full lg:max-w-2xl pl-8" data-src="{toLowRes(post.contenu[3].images[0])}" alt="Catalogue-pana.svg">
 		</div>
 	</div>
 </div>
