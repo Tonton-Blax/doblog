@@ -19,6 +19,7 @@ collections:
       - { label: "meta description", name: "meta", widget: "string", hint: "La meta quoi" }
       - { label: "balise title", name: "title", widget: "string"}
       - { label: "h1", name: "h1", widget: "string"}
+      - { label: "Contenu du chapo", name: "chapocontent", widget: markdown, hint : "Optionnel"}
       - label: Image de couverture
         name: featured_image
         widget: object
@@ -33,7 +34,6 @@ collections:
         name: "contenu"
         widget: "list"
         fields:
-          - { label: "Contenu du chapo", name: "chapocontent", widget: text, hint : "Optionnel"}
           - { label : "Un h2", name : "h2", widget : string, hint : 'Titre de section (h2)'}
           - { label : "Un h3", name : "h3", widget : string, hint : 'Titre (ou sous-titre) de section (h3)'}
           - { label: "Corps", name: "body", widget: "markdown" }
