@@ -11,11 +11,12 @@ const getAllPosts = () => {
 				'utf-8'
 			);
 			const mattered = grayMatter(file);
+			
 			return { 
 				title: mattered.data.title, 
 				slug, 
 				img : mattered.data.featured_image.thumbnail, 
-				h1 :  mattered.data.h1,
+				chapo :  mattered.data.chapocontent,
 				date : mattered.data.date,
 				thematique : mattered.data.thematique
 			};

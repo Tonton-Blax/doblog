@@ -31,6 +31,7 @@
 	import { browser } from '$app/env';
 	import {onMount} from 'svelte'
 	import { toLowRes } from '$lib/utils';
+	import marked from 'marked';
 	export let posts;
 	export let postType;
 	
@@ -83,7 +84,7 @@
 					  {post.title}
 					</p>
 					<p class="mt-3 text-base text-gray-500">
-					  {post.h1}
+					  {@html marked(post.chapo)}
 					</p>
 				</a>
 			</svelte:fragment>
