@@ -26,49 +26,22 @@ collections:
           - {name: thumbnail, label: Image, widget: image}
           - {name: alt, label: Balise alt, widget: string}
           - {name: legend, label: Légende, widget: string}
-      #- { label: "Image de couverture", name: "thumbnail", widget: "image"}
       - { label: "Décalage de l'image de couverture", name: "decalage", widget: "number", default: 0, value_type: "int", min: -100, max: 100, step: 1 }
       - { label: "Date de publication", name: "date", widget: "datetime"}
       - { label: "Tableau (optionnel, pour chaque ligne, séparer les colonnes par des virgules)", name: "tableau", widget: "list", field: {label: ligne, name: ligne, widget: string} }
-      - label: 'Section'
-        name: 'contenu'
-        widget: 'list'
-        types:
-          - label: "Chapo"
-            name: "chapo"
-            widget: object
-            fields:
-              - { label: "Contenu du chapo", name: "chapocontent", widget: text, hint : "Optionnel"}
-          - label: "Titre de section (h2)"
-            name: "headingh2"
-            widget: object
-            default: 'Titre de la section'
-            fields: 
-              - { label : "Un h2", name : "h2", widget : string, hint : 'Titre de section (h2)'}
-          - label: "Titre de section (h3)"
-            name: "headingh3"
-            widget: object
-            default: 'Titre de la section'
-            fields: 
-              - { label : "Un h3", name : "h3", widget : string, hint : 'Titre (ou sous-titre) de section (h3)'}
-          - label: "Bloc de texte"
-            name: "textblock"
-            widget: object
-            fields: 
-              - { label: "Corps", name: "body", widget: "markdown" }
-          - label: "Encart"
-            name: "encart"
-            widget: object
-            fields: 
-              - { label: "Contenu de l'encart", name: "encartcontent", widget: text, hint : "Optionnel"}
+      - label: 'Section de contenu'
+        name: "contenu"
+        widget: "list"
+        fields:
+          - { label: "Contenu du chapo", name: "chapocontent", widget: text, hint : "Optionnel"}
+          - { label : "Un h2", name : "h2", widget : string, hint : 'Titre de section (h2)'}
+          - { label : "Un h3", name : "h3", widget : string, hint : 'Titre (ou sous-titre) de section (h3)'}
+          - { label: "Corps", name: "body", widget: "markdown" }
+          - { label: "Contenu de l'encart", name: "encartcontent", widget: text, hint : "Optionnel"}
           - label: "Images"
-            name: "imagesobject"
-            widget: object
-            fields: 
-              - label: "Images"
-                name: images
-                widget: list
-                fields:
-                - {name: image_section, label: Image, widget: image}
-                - {name: alt_section, label: Balise alt, widget: string}
-                - {name: legend_section, label: Légende, widget: string}
+            name: 'images'
+            widget: list
+            fields:
+            - {name: image_section, label: Image, widget: image}
+            - {name: alt_section, label: Balise alt, widget: string}
+            - {name: legend_section, label: Légende, widget: string}
