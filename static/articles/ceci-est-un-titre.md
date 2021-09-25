@@ -1,10 +1,10 @@
 ---
 layout: articles
 thematique: SEO
-slug: Encore un article
-canonical: test-article-canonique
+slug: encore-un-article-en-chocolat
+canonical: encore-un-article
 meta: Test meta description
-title: Ceci est un titre
+title: Encore un article
 h1: Ceci est un H1 de sa mère
 chapocontent: Lorem ipsum dolor sit amet. Ab nihil dolores qui **voluptatem**
   voluptatem est unde doloribus et dolorem libero qui enim molestiae. Aut modi
