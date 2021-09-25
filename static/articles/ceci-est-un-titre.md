@@ -1,11 +1,15 @@
 ---
 layout: articles
-thematique: toucans
+thematique: SEO
 slug: Encore un article
 canonical: test-article-canonique2
 meta: Test meta description
 title: Ceci est un titre
 h1: Ceci est un H1 de sa mère
+chapocontent: Lorem ipsum dolor sit amet. Ab nihil dolores qui **voluptatem**
+  voluptatem est unde doloribus et dolorem libero qui enim molestiae. Aut modi
+  **soluta** sed veritatis aliquid qui rerum perspiciatis ut quos magnam vel
+  quaerat omnis aut magnam similique.
 featured_image:
   thumbnail: ../img/uploads/pouet2.jpg
   alt: Ceci est un pingouin
@@ -15,41 +19,53 @@ date: 2021-09-24T20:32:50.520Z
 tableau: []
 thumbnail: ../img/uploads/pingouin.jpg
 contenu:
-  - type: chapo
-    chapocontent: Un autre chapeau, avec un renard barbu en prime, sauf qu'en fait
-      c'est un toucan et que c'est la plus jolie de toutes les toucantes en
-      chocolat hihi.
-  - type: headingh2
-    h2: Ceci est un H2
-  - type: textblock
-    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-      Suspendisse lectus tortor, dignissim sit amet, **adipiscing nec, ultricies
-      sed, dolor**. Cras elementum ultrices diam. Maecenas ligula massa, varius
-      a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy
-      molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.
-      Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a,
-      enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor.
-      Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent
-      blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales.
-      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-      cubilia Curae; Aliquam nibh. Mauris ac [mauris sed pede](www.wikipedia.fr)
-      pellentesque fermentum. Maecenas adipiscing ante non diam sodales
-      hendrerit.
-  - type: imagesobject
+  - h2: Ceci est un h2
+    h3: Ceci est un h3
+    body: >-
+      Lorem ipsum dolor sit amet. Ab nihil dolores qui voluptatem voluptatem est
+      unde doloribus et dolorem libero qui enim molestiae. Aut modi soluta sed
+      veritatis aliquid qui rerum perspiciatis ut quos magnam vel quaerat omnis
+      aut magnam similique.
+
+
+      1. Rem doloremque odio ut voluptatum repellendus eum quia dolor!
+
+      2. Et internos accusamus sit consequuntur dicta ad perspiciatis omnis a corporis vitae?
+
+      3. A natus expedita At tempora corporis.
+
+      4. Vel quia itaque et quia commodi.
+
+
+      Hic rerum reiciendis et temporibus molestiae sit laudantium eligendi et blanditiis provident ut accusamus provident non beatae amet? Et nemo assumenda sit animi perspiciatis et distinctio dicta.
+
+
+      * Non repellat veniam sed dolorem corrupti.
+
+      * Eum similique laborum ut autem cumque.
+
+
+      > Et aliquam eaque est ducimus sint ea possimus dolorem At perferendis facere!
     images:
-      - image_section: ../img/uploads/chat.jpg
-        alt_section: Ceci est une tête de chat
-        legend_section: La légende du chat
-  - type: headingh3
-    h3: Wouhouhou un h3 c'est pas trop fou ça ?
-  - type: textblock
-    body: "**Lorem ipsum**, quia **dolor sit, amet, consectetur, adipisci** v**elit,
-      sed** quia non numquam **eius mod**i **tempor**a **incidunt, ut labore et
-      dolore magna**m **aliqua**m quaerat voluptatem. **Ut enim ad
-      minim**a **veniam, quis nostru**m **exercitation**em **ullam co**rporis
-      suscipit **laborios**am, **nisi ut aliquid ex ea commodi
-      consequat**ur? **Quis aute**m vel eum **iure
-      reprehenderit,** qui **in** ea **voluptate velit esse**, quam nihil
-      molestiae **c**onsequatur, vel **illum**,
-      qui **dolore**m **eu**m **fugiat**, quo vo."
+      - image_section: ../img/uploads/pouet.jpg
+        alt_section: La balise alt
+        legend_section: Ceci est une légende
+    encartcontent: Encart test
+  - h2: Encore un H2
+    h3: Et un autre H3
+    body: Lorem ipsum dolor sit amet. A ullam illo 33 ducimus impeditaut fugit et
+      dolorem **inventore** aut aperiam laboriosam. Aut voluptas quas quo
+      incidunt consequatur rem veritatis eaque et iusto dolor et doloremque
+      doloremque quo placeat ullam ut quasi quidem. Aut **veniam** officiis ut
+      voluptate praesentium ea velit omnis non eaque voluptatibus. Et eligendi
+      expedita et labore eaque a exercitationem voluptatem. Et magnam minima Non
+      dolore a tenetur vero qui dolorem consequatur. Qui accusantium nisi vel
+      dolor rationequi nemo est ipsum repellendus. Et nobis magni sit dolorem
+      repellendus rem corporis dolor aut consequuntur nostrum.
+    encartcontent: Hic ratione iste Sit recusandae et exercitationem sapiente est
+      assumenda natus id temporibus voluptatem non dolorem repudiandae
+    images:
+      - image_section: ../img/uploads/renard_barbu.jpg
+        alt_section: l'alt du renard barbu
+        legend_section: Ceci est un renard barbu
 ---
