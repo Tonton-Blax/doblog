@@ -4,7 +4,7 @@ thematique: Autre rubrique
 slug: autre-rubrique
 canonical: autre-rubrique-test
 meta: Test meta description
-title: Ceci est un titre
+title: Des pingouins velus
 h1: Ceci est un H1 de sa mère
 chapocontent: Lorem ipsum dolor sit amet. Ab nihil dolores qui **voluptatem**
   voluptatem est unde doloribus et dolorem libero qui enim molestiae. Aut modi
