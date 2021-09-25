@@ -15,11 +15,11 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "articles"}
       - { label: "Thématique", name: "thematique", widget: "string", default: "SEO" }
       - { label: "Slug", name: "slug", widget: "string", hint: "IMPORTANT : l'adresse de la page, en minuscule, sans espaces!" }
-      - { label: "url canonique", name: "canonical", widget: "string", hint: "Laisser vide si identique à slug" }
+      - { label: "url canonique", name: "canonical", widget: "string", hint: "Laisser vide si identique à slug", required : false }
       - { label: "meta description", name: "meta", widget: "string", hint: "La meta quoi" }
       - { label: "balise title", name: "title", widget: "string"}
-      - { label: "h1", name: "h1", widget: "string"}
-      - { label: "Contenu du chapo", name: "chapocontent", widget: markdown, hint : "Optionnel"}
+      - { label: "h1", name: "h1", widget: "string" }
+      - { label: "Contenu du chapo", name: "chapocontent", widget: markdown, hint : "Optionnel", required : false}
       - label: Image de couverture
         name: featured_image
         widget: object
@@ -35,11 +35,12 @@ collections:
         widget: "list"
         fields:
           - { label : "Un h2", name : "h2", widget : string, hint : 'Titre de section (h2)'}
-          - { label : "Un h3", name : "h3", widget : string, hint : 'Titre (ou sous-titre) de section (h3)'}
+          - { label : "Un h3", name : "h3", widget : string, hint : 'Titre (ou sous-titre) de section (h3)', required : false}
           - { label: "Corps", name: "body", widget: "markdown" }
-          - { label: "Contenu de l'encart", name: "encartcontent", widget: text, hint : "Optionnel"}
+          - { label: "Contenu de l'encart", name: "encartcontent", widget: text, hint : "Optionnel", required : false}
           - label: "Images"
             name: 'images'
+            required : false
             widget: list
             fields:
             - {name: image_section, label: Image, widget: image}
