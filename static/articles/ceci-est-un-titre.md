@@ -2,7 +2,7 @@
 layout: articles
 thematique: SEO
 slug: Encore un article
-canonical: test-article-canonique2
+canonical: test-article-canonique
 meta: Test meta description
 title: Ceci est un titre
 h1: Ceci est un H1 de sa mère
@@ -50,7 +50,7 @@ contenu:
       - image_section: ../img/uploads/pouet.jpg
         alt_section: La balise alt
         legend_section: Ceci est une légende
-    encartcontent: Encart test
+    encartcontent: ""
   - h2: Encore un H2
     h3: Et un autre H3
     body: Lorem ipsum dolor sit amet. A ullam illo 33 ducimus impeditaut fugit et
