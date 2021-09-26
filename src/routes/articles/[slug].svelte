@@ -35,6 +35,21 @@
 	import marked from 'marked';
 	export let post;
 	//console.log(post)
+	
+	const renderer = { 
+		image(href, title, text) {
+			console.log("href, title, text :: ", href, title, text);
+
+			return `
+				<figure class="mt-3 flex text-sm text-gray-500" style="flex-direction:column;">
+					<img class="lazy rounded-lg shadow-lg object-cover object-center" alt="${text}" data-src="${href}">
+			        <figcaption class="ml-2">${title}</figcaption>
+    			</figure>`
+			}
+	};
+
+	marked.use({ renderer });
+	
 	let lazyloadInstance;
 	let refresh;
 	if (browser) {
@@ -47,7 +62,7 @@
 		refresh=false
 	}
 	
-	onMount(()=>lazyloadInstance.update());
+	onMount(()=>{ lazyloadInstance.update() });
 
 
 </script>
@@ -76,15 +91,15 @@
   {#each post.contenu as contenu, idx}
   <section class="bg-white overflow-hidden">
 	<div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-	  <div class="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen"></div>
-	  <div class="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
+	  <div class:lg:block={contenu.images[0]?.image_section?.length} class="hidden bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen"></div>
+	  <div class:gridded={contenu.images[0]?.image_section?.length} class="mx-auto text-base lg:max-w-none max-w-prose">
 		<div>
 		  <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">{contenu.h2}</h2>
 		  <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{contenu.h3}</h3>
 		</div>
 	  </div>
 
-	  <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
+	  <div class:gridded={contenu.images[0]?.image_section?.length} class="mt-8">
 		<div class="relative lg:row-start-1 lg:col-start-2">
 		  <svg class="hidden lg:block absolute top-0 right-0 -mt-20 -mr-20" width="404" height="384" fill="none" viewBox="0 0 404 384" aria-hidden="true">
 			<defs>
@@ -105,7 +120,7 @@
 				</svelte:fragment>
 			</ContentImage>
 		  {:else}
-			<div class="prose text-base max-w-prose mx-auto lg:max-w-none">
+			<div id="contentcontainer" class="prose text-base max-w-prose mx-auto lg:max-w-none">
 				{@html marked(contenu.body)}
 			</div>
 		  {/if}
@@ -124,7 +139,7 @@
 				</svelte:fragment>
 			</ContentImage>
 		  {:else}
-			<div class="prose text-base max-w-prose mx-auto lg:max-w-none">
+			<div id="contentcontainer" class="prose text-base max-w-prose mx-auto lg:max-w-none">
 				{@html marked(contenu.body)}
 			</div>
 		  {/if}

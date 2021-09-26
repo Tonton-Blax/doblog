@@ -27,6 +27,7 @@
 
 <script>
 	import { page } from '$app/stores';	
+	import { goto, invalidate } from '$app/navigation';
 	import Card from '$lib/Card.svelte';
 	import CardWrapper from '$lib/CardWrapper.svelte';
 	import lazyload from 'vanilla-lazyload';
@@ -40,17 +41,30 @@
 	
 	let refresh;
 	let lazyloadInstance;
+	let k=0;
 
 	if (browser) {
 		lazyloadInstance = new lazyload();
-		window.onbeforeunload = ()=> {refresh=true; return undefined};
+		window.onbeforeunload = ()=> {
+			refresh=true;
+			return undefined
+		};
 	}
-	
-	onMount(()=>lazyloadInstance.update());
+
+	onMount(()=>{
+		console.log(k++);
+		console.log($page.params)
+		lazyloadInstance.update()});
 	
 	$: if (refresh) {
 		lazyloadInstance.update();
 		refresh=false
+	}
+
+	const refreshPage = async (href) => {
+		await invalidate('articles.json')
+		await goto('/articles');
+		console.log($page.params)
 	}
 
 
@@ -82,7 +96,7 @@
 				</a>
 			</svelte:fragment>
 			<svelte:fragment slot="thematique">
-				<a href="#" class="hover:underline">
+				<a href="/articles?thematique={post.thematique}" class="hover:underline" on:click|preventDefault={refreshPage(`/articles/?thematique=${ post.thematique }`)}>
 					{post.thematique || ""}
 				</a>
 			</svelte:fragment>
