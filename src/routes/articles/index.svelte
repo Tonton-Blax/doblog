@@ -34,6 +34,7 @@
 	import { toLowRes } from '$lib/utils';
 	import marked from 'marked';
 	export let posts;
+	import { fly } from 'svelte/transition';
 	export let postType;
 	
 	let refresh;
@@ -62,6 +63,7 @@
 	
 	<CardWrapper>
 		{#each posts as post, idx}
+		<div transition:fly={{y:500, delay : idx * 100}}>
 		<Card date={post.date}>
 			<svelte:fragment slot="thumbnail">
 				<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img)}"  alt="">
@@ -82,6 +84,7 @@
 				</a>
 			</svelte:fragment>
 		</Card>
+		</div>
 		{/each}
 	</CardWrapper>
 {:else}
