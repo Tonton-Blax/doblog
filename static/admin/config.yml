@@ -16,6 +16,7 @@ collections:
       - { label: "Thématique", name: "thematique", widget: "string", default: "SEO" }
       - { label: "Slug", name: "slug", widget: "string", hint: "IMPORTANT : l'adresse de la page, en minuscule, sans espaces!" }
       - { label: "url canonique", name: "canonical", widget: "string", hint: "Laisser vide si identique à slug", required : false }
+      - { label: "json+ld", name: "jsonld", widget: "text", hint: "A valider préalalement sur search.google.com/test/rich-results" }
       - { label: "meta description", name: "meta", widget: "string", hint: "La meta quoi" }
       - { label: "balise title", name: "title", widget: "string"}
       - { label: "h1", name: "h1", widget: "string" }

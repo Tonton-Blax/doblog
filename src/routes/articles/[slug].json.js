@@ -58,11 +58,12 @@ async function processImages(images, res = 400) {
 		const filePath = image.substring(image.length-fileExt.length-1, 3)
 		const prefixPath = filePath.substring(0, filePath.lastIndexOf("/")+1);
 		const fileName = filePath.split(prefixPath).pop();
+		const toSameFileExt = fileExt.endsWith('jpeg') || fileExt.endsWith('jpg')  ? 'jpeg' : fileExt;
 
 		if (!fs.existsSync(path.resolve('static/img', `${fileName}__${res}.${fileExt}`))) {
 			await sharp(path.resolve('static/img/uploads', `${fileName}.${fileExt}`))
 				.resize({ width: res })
-				.jpeg({ quality: 70 })
+				[toSameFileExt]({ quality: 70 })
 				.toFile(path.resolve('static/img', `${fileName}__${res}.${fileExt}`));
 		}
 	}
