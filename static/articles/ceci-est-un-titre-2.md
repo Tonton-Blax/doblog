@@ -37,6 +37,13 @@ contenu:
       4. Vel quia itaque et quia commodi.
 
 
+
+
+      ![Encore des pingouins](../img/uploads/manchots.jpg "Pouet pouet pingouin")
+
+
+
+
       Hic rerum reiciendis et temporibus molestiae sit laudantium eligendi et blanditiis provident ut accusamus provident non beatae amet? Et nemo assumenda sit animi perspiciatis et distinctio dicta.
 
 
