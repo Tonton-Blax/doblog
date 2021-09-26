@@ -69,9 +69,9 @@
 	</div>
 	<div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
 	  <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">{post.h1}</h1>
-	  <p class="mt-6 text-xl text-indigo-100 max-w-3xl"> {post.chapocontent}</p>
+	  <p class="mt-6 text-xl text-indigo-100 max-w-3xl"> {@html marked(post.chapocontent)}</p>
 	</div>
-  </div>
+  </div>	
   
   {#each post.contenu as contenu, idx}
   <section class="bg-white overflow-hidden">
