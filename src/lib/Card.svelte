@@ -1,5 +1,6 @@
 <script>
 	export let date;
+	export let auteur = "Dorothée Redval"
 </script>
 
 <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
@@ -20,7 +21,7 @@
 		</div>
 		<div class="ml-3">
 		<p class="text-sm font-medium text-gray-900">
-			Dorothée Redval
+			{auteur}
 		</p>
 		<div class="flex space-x-1 text-sm text-gray-500">
 			<time datetime="2020-02-12">

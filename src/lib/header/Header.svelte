@@ -1,35 +1,119 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	import { navigating, page } from '$app/stores';
+	import {onMount} from 'svelte'
+	import Dorothee from './Dorothee.svelte'
+	let ready = false;
+		
+	onMount(()=>setTimeout( () => ready = true , 300));
+	/*
+	$: if ($navigating!==null) {
+		ready = false;
+		setTimeout( () => ready = true , 1000);
+	}
+	*/
+
 </script>
 
-<header>
-	<nav id="header" class="w-full z-30 top-10 py-1 bg-white shadow-lg border-b border-blue-400">
-		<div class="w-full flex items-center justify-between mt-0 px-6 py-2">
-		   <label for="menu-toggle" class="cursor-pointer md:hidden block">
-			  <svg class="fill-current text-blue-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-				 <title>menu</title>
-				 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-			  </svg>
-		   </label>
-		   <input class="hidden" type="checkbox" id="menu-toggle">
-		   
-		   <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-			  <nav>
-				 <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
-					<li class:active={$page.path === '/'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" sveltekit:prefetch href="/">Contact</a></li>
-					<li class:active={$page.path === '/about'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" sveltekit:prefetch href="/about">Mes références</a></li>
-					<li class:active={$page.path === '/todos'}><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/articles">Articles</a></li>
-				 </ul>
-			  </nav>
-		   </div>
-		   
-		   <div class="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
-			  <div class="auth flex items-center w-full md:w-full">
-				 <button class="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</button>
-				 <button class="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100">Sign up</button>
-			  </div>
-		   </div>
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<nav class="bg-white shadow">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+	  <div class="flex justify-between h-16">
+		<div class="flex">
+		  <div class="flex-shrink-0 flex items-center">
+			<img class="block lg:hidden h-8 w-auto" src="/img/writing.svg" alt="Workflow">
+			<img class="hidden lg:block h-8 w-auto" src="/img/writing.svg" alt="Workflow">
+		  </div>
+		  <div class="hidden sm:ml-6 sm:flex sm:space-x-8" id="menu-bloc">
+			<!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
+			<a href="/" class:border-indigo-500={$page.path === '/'} sveltekit:prefetch 
+			class="border-transparent text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-extrabold">
+			  Accueil
+			</a>
+			<a href="/about" class:border-indigo-500={$page.path === '/about'} sveltekit:prefetch 
+			class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-extrabold">
+			  Me Myself & I
+			</a>
+			<a href="/articles" class:border-indigo-500={$page.path === '/articles'}
+			class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-extrabold">
+			  Articles
+			</a>
+			
+				
+			
+		  </div>
 		</div>
-	 </nav>
-</header>
+		{#if ready}
+						<Dorothee/>
+				{/if}
+
+		<div class="-mr-2 flex items-center sm:hidden">
+		  <!-- Mobile menu button -->
+		  <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+			<span class="sr-only">Open main menu</span>
+			<!--
+			  Icon when menu is closed.
+  
+			  Heroicon name: outline/menu
+  
+			  Menu open: "hidden", Menu closed: "block"
+			-->
+			<svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+			</svg>
+			<!--
+			  Icon when menu is open.
+  
+			  Heroicon name: outline/x
+  
+			  Menu open: "block", Menu closed: "hidden"
+			-->
+			<svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+			</svg>
+		  </button>
+		</div>
+	  </div>
+	</div>
+  
+	<!-- Mobile menu, show/hide based on menu state. -->
+	<div class="sm:hidden" id="mobile-menu">
+	  <div class="pt-2 pb-3 space-y-1">
+		<!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
+		<a href="/" class:active={$page.path === '/'} sveltekit:prefetch class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Accueil</a>
+		<a href="/about" class:active={$page.path === '/about'} class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Me Myself & I</a>
+		<a href="/articles" class:active={$page.path === '/articles'} sveltekit:prefetch={!$page.path.includes('articles')} class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Articles</a>
+	  </div>
+	  <div class="pt-4 pb-3 border-t border-gray-200">
+		<div class="flex items-center px-4">
+		  <div class="flex-shrink-0">
+			<img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+		  </div>
+		  <div class="ml-3">
+			<div class="text-base font-medium text-gray-800">Tom Cook</div>
+			<div class="text-sm font-medium text-gray-500">tom@example.com</div>
+		  </div>
+		  <button type="button" class="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+			<span class="sr-only">View notifications</span>
+			<!-- Heroicon name: outline/bell -->
+			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+			</svg>
+		  </button>
+		</div>
+		<div class="mt-3 space-y-1">
+		  <a href="/" class:active={$page.path === '/'} sveltekit:prefetch class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Accueil</a>
+		  <a href="/about" class:active={$page.path === '/about'} class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Me Myself & I</a>
+		  <a href="/articles" class:active={$page.path === '/articles'} sveltekit:prefetch={!$page.path.includes('articles')} class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Articles</a>
+		</div>
+	  </div>
+	</div>
+  </nav>
+  
+
+<style lang="postcss">
+	#menu-bloc a:hover {
+		@apply border-gray-300 text-gray-700
+	}
+
+</style>

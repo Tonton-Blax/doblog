@@ -33,7 +33,8 @@ export async function get({ params }) {
 
 	const { data, content } = grayMatter(file);
 	const html = marked(content, { renderer });
-	const contentImages = Object.values(data.contenu).filter(d => d.type==='imagesobject').map(i => i.images).flat().map(i=>i.image_section);
+	//const contentImages = Object.values(data.contenu).filter(d => d.type==='imagesobject').map(i => i.images).flat().map(i=>i.image_section);
+	const contentImages = data.contenu.map(d => d.images).flat().map(d => d.image_section)
 	if (contentImages);
 		processImages(contentImages);
 	if (data?.featured_image?.thumbnail) {
