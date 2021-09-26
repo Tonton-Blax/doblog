@@ -15,6 +15,7 @@ specifiers:
   postcss-load-config: ^3.1.0
   sharp: ^0.29.1
   svelte: ^3.43.0
+  svelte-intersection-observer: ^0.8.0
   svelte-preprocess: ^4.9.5
   svelte-seo: ^1.3.0
   tailwindcss: ^2.2.15
@@ -39,6 +40,7 @@ devDependencies:
   postcss-load-config: 3.1.0
   sharp: 0.29.1
   svelte: 3.43.0
+  svelte-intersection-observer: 0.8.0
   svelte-preprocess: 4.9.5_c4af368bfec438a780c940d5b18c59a0
   tailwindcss: 2.2.15_dd4850c39760d2665af3f9e21d00faf4
 
@@ -2009,6 +2011,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.43.0
+    dev: true
+
+  /svelte-intersection-observer/0.8.0:
+    resolution: {integrity: sha512-TyCrgv8bxnMczQrswqvgtzlvtJK5wo/X23mSypNBCxXfVOiQgXIXNPf06E+BLTQI3jrrtwFz0WLfzDjBa56ppA==}
     dev: true
 
   /svelte-preprocess/4.9.5_c4af368bfec438a780c940d5b18c59a0:
