@@ -26,6 +26,7 @@
 </script>
 
 <script>
+	import { page } from '$app/stores';	
 	import Card from '$lib/Card.svelte';
 	import CardWrapper from '$lib/CardWrapper.svelte';
 	import lazyload from 'vanilla-lazyload';
@@ -57,6 +58,8 @@
 
 <svelte:head>
 	<title> Articles</title>
+	<meta name="description" content="Articles dédiés aux SEO, mais pas que"> <!-- Meta Description -->
+	<link rel="canonical" href="https://{$page.host}/articles" />
 </svelte:head>
 
 {#if posts.length != 0}
