@@ -47,13 +47,13 @@
 			  </h3>
 			  <ul role="list" class="mt-4 space-y-4">
 				<li>
-				  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+				  <a href="/" class="text-base text-gray-500 hover:text-gray-900">
 					Contact
 				  </a>
 				</li>
 
 				<li>
-				  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+				  <a href="/" class="text-base text-gray-500 hover:text-gray-900">
 					A propos
 				  </a>
 				</li>
@@ -65,13 +65,13 @@
 			  </h3>
 			  <ul role="list" class="mt-4 space-y-4">
 				<li>
-				  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+				  <a href="/" class="text-base text-gray-500 hover:text-gray-900">
 					SEO
 				  </a>
 				</li>
 
 				<li>
-				  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+				  <a href="/" class="text-base text-gray-500 hover:text-gray-900">
 					Articles généralistes
 				  </a>
 				</li>
@@ -85,13 +85,13 @@
 			  </h3>
 			  <ul role="list" class="mt-4 space-y-4">
 				<li>
-				  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+				  <a href="/" class="text-base text-gray-500 hover:text-gray-900">
 					Conditions d'utilisation
 				  </a>
 				</li>
 
 				<li>
-				  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+				  <a href="/" class="text-base text-gray-500 hover:text-gray-900">
 					Politique RGPD
 				  </a>
 				</li>  

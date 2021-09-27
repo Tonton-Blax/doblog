@@ -2,13 +2,14 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ page, fetch }) {
+	 export async function load({ fetch, page }) {
 		const { slug } = page.params;
 		const url = `/articles/${ slug }`;
 		const res = await fetch(`${ url }.json`);
+		let posts = await (await fetch(`/articles.json`)).json();
 		if (res.ok) {
 			return {
-				props: { post: await res.json() }
+				props: { post: await res.json(), posts : posts.filter((_,i)=> i < 4) }
 			};
 		}
 		if (res.status == 404) {
@@ -26,20 +27,19 @@
 
 <script>
 	import { browser } from '$app/env';
+	import Card from '$lib/Card.svelte';
+	import CardWrapper from '$lib/CardWrapper.svelte';
 	import { toLowRes } from '$lib/utils';
+	import { fly } from 'svelte/transition';
 	import ContentImage from '$lib/ContentImage.svelte'
 	import SvelteSeo from "svelte-seo";
 	import lazyload from 'vanilla-lazyload';
-	import { onMount } from 'svelte'
+	import { onMount, tick } from 'svelte'
 	import { page } from '$app/stores';
 	import marked from 'marked';
-	export let post;
-	//console.log(post)
-	
+	export let post, posts;
 	const renderer = { 
 		image(href, title, text) {
-			console.log("href, title, text :: ", href, title, text);
-
 			return `
 				<figure class="mt-3 flex text-sm text-gray-500" style="flex-direction:column;">
 					<img class="lazy rounded-lg shadow-lg object-cover object-center" alt="${text}" data-src="${href}">
@@ -58,9 +58,10 @@
 	}
 	
 	$: if (refresh) {
-		lazyloadInstance.update();
-		refresh=false
+		setTimeout(()=>lazyloadInstance.update(),100);
+		refresh=false;
 	}
+	
 	
 	onMount(()=>{ lazyloadInstance.update() });
 
@@ -148,4 +149,32 @@
 	  </div>
 	</div>
 </section>
+
 {/each}
+
+<CardWrapper wrapperName={"Derniers articles"}>
+	{#each posts as post, idx}
+	<div transition:fly={{y:500, delay : idx * 100}}>
+	<Card date={post.date}>
+		<svelte:fragment slot="thumbnail">
+			<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img)}"  alt="">
+		</svelte:fragment>
+		<svelte:fragment slot="bloglink">
+			<a href="/articles/{ post.slug }" class="block mt-2" on:click={()=>refresh=true}>
+				<p class="text-xl font-semibold text-gray-900">
+				  {post.title}
+				</p>
+				<p class="mt-3 text-base text-gray-500">
+				  {@html marked(post.chapo)}
+				</p>
+			</a>
+		</svelte:fragment>
+		<svelte:fragment slot="thematique">
+			<a href="/articles?thematique={post.thematique}" class="hover:underline">
+				{post.thematique || ""}
+			</a>
+		</svelte:fragment>
+	</Card>
+	</div>
+	{/each}
+</CardWrapper>

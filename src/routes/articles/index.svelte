@@ -1,7 +1,7 @@
 <script context="module">
 
 	export async function load({ fetch }) {
-		const res = await fetch(`articles.json`);
+		const res = await fetch(`/articles.json`);
 		if (res.status === 200) {
 			return {
 				props: {
@@ -52,8 +52,6 @@
 	}
 
 	onMount(()=>{
-		console.log(k++);
-		console.log($page.params)
 		lazyloadInstance.update()});
 	
 	$: if (refresh) {
@@ -64,7 +62,6 @@
 	const refreshPage = async (href) => {
 		await invalidate('articles.json')
 		await goto('/articles');
-		console.log($page.params)
 	}
 
 

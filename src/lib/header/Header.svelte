@@ -5,12 +5,16 @@
 	import Dorothee from './Dorothee.svelte'
 	let ready = false;
 	let open = false;
+	let burger;
 	onMount(()=>setTimeout( () => ready = true , 300));
+	let handleClick = (e) => {
+		if (!burger.contains(e.target))
+			open = false;
+		else open = !open
+	}
 
 </script>
-
-
-<!-- This example requires Tailwind CSS v2.0+ -->
+<svelte:window on:scroll={()=>open = false} on:click={handleClick} />
 <nav class="bg-white shadow">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 	  <div class="flex justify-between h-16">
@@ -29,7 +33,7 @@
 			class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-extrabold">
 			  Me Myself & I
 			</a>
-			<a href="/articles" class:border-indigo-500={$page.path === '/articles'}
+			<a href="/articles" class:border-indigo-500={$page.path === '/articles'} sveltekit:prefetch
 			class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-extrabold">
 			  Articles
 			</a>
@@ -44,18 +48,9 @@
 
 		<div class="-mr-2 flex items-center sm:hidden">
 		  <!-- Mobile menu button -->
-		  <button 
-		  	on:click={()=>open=!open}
+		  <button bind:this={burger}
 		 	type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
-			<span class="sr-only">Open main menu</span>
-			<!--
-			  Icon when menu is closed.
-  
-			  Heroicon name: outline/menu
-  
-			  Menu open: "hidden", Menu closed: "block"
-			-->
-			
+			<span class="sr-only">Open main menu</span>			
 			<svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 			{#if open}
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />

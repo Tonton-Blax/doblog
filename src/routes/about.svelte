@@ -104,9 +104,9 @@
 			  <div class="ml-3">
 				<p class="text-base text-gray-500">
 				  En cochant cette case, vous acceptez nos conditions
-				  <a href="#" class="font-medium text-gray-700 underline">Politique de confidentialité</a>
+				  <a href="/" class="font-medium text-gray-700 underline">Politique de confidentialité</a>
 				  and
-				  <a href="#" class="font-medium text-gray-700 underline">Politique de cookies</a>.
+				  <a href="/" class="font-medium text-gray-700 underline">Politique de cookies</a>.
 				</p>
 			  </div>
 			</div>
