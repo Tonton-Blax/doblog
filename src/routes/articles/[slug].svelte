@@ -6,10 +6,10 @@
 		const { slug } = page.params;
 		const url = `/articles/${ slug }`;
 		const res = await fetch(`${ url }.json`);
-		let posts = await (await fetch(`/articles.json`)).json();
 		if (res.ok) {
+			const stuff = await res.json();
 			return {
-				props: { post: await res.json(), posts : posts.filter((_,i)=> i < 4) }
+				props: { post: stuff.post, posts : stuff.posts.filter((_,i)=> i < 4) }
 			};
 		}
 		if (res.status == 404) {

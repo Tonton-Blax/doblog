@@ -229,7 +229,7 @@
 						<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img)}"  alt="">
 					</svelte:fragment>
 					<svelte:fragment slot="bloglink">
-						<a sveltekit:prefetch href="articles/{ post.slug }" class="block mt-2">
+						<a sveltekit:prefetch href="/articles/{ post.slug }" class="block mt-2">
 							<p class="text-xl font-semibold text-gray-900">
 							{post.title}
 							</p>
