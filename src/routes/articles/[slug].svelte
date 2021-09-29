@@ -2,6 +2,7 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
+	 export const prerender = true;
 	 export async function load({ fetch, page }) {
 		const { slug } = page.params;
 		const url = `/articles/${ slug }`;
@@ -30,7 +31,7 @@
 	import Card from '$lib/Card.svelte';
 	import CardWrapper from '$lib/CardWrapper.svelte';
 	import { toLowRes } from '$lib/utils';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import ContentImage from '$lib/ContentImage.svelte'
 	import SvelteSeo from "svelte-seo";
 	import lazyload from 'vanilla-lazyload';
@@ -153,7 +154,13 @@
 	<div transition:fly={{y:500, delay : idx * 100}}>
 	<Card date={post.date}>
 		<svelte:fragment slot="thumbnail">
-			<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img)}"  alt="">
+			<picture>
+				<source
+				  type="image/webp"
+				  data-src="{toLowRes(post.img, true)}"
+				/>
+				<img class="lazy h-48 w-full object-cover" alt="{post.title}"  width="600" height="400" data-src="{toLowRes(post.img)}" />
+			  </picture>
 		</svelte:fragment>
 		<svelte:fragment slot="bloglink">
 			<a href="/articles/{ post.slug }" class="block mt-2" sveltekit:prefetch>

@@ -40,11 +40,17 @@ async function processImages(images, res = 400) {
 		const fileName = filePath.split(prefixPath).pop();
 		const toSameFileExt = fileExt == 'jpeg' || fileExt == 'jpg' ? 'jpeg' : fileExt;
 
-		if (!fs.existsSync(path.resolve('static/img', `${fileName}__${res}.${fileExt}`))) {
+		if (!fs.existsSync(path.resolve('static/img', `${fileName}__${res}.${fileExt}`)) ||	!fs.existsSync(path.resolve('static/img', `${fileName}__${res}.webp`))) {
+
 			await sharp(path.resolve('static/img/uploads', `${fileName}.${fileExt}`))
 				.resize({ width: res })
 				[toSameFileExt]({ quality: 70 })
 				.toFile(path.resolve('static/img', `${fileName}__${res}.${fileExt}`));
+
+			await sharp(path.resolve('static/img/uploads', `${fileName}.${fileExt}`))
+				.resize({ width: res })
+				.webp({ quality: 70 })
+				.toFile(path.resolve('static/img', `${fileName}__${res}.webp`));
 		}
 	}
 }
