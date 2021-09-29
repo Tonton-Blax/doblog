@@ -2,9 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import grayMatter from 'gray-matter';
 
-let articles;
+let articles, table;
 export const getAllPosts = (tableOnly) => {
 	try {
+		if (tableOnly && table)
+			return table;
+		else if (!tableOnly && articles) return articles
+		else
 		return fs.readdirSync('static/articles').map((fileName) => {
 			//const slug = fileName.slice(0, -3);
 			const file = fs.readFileSync(
