@@ -57,11 +57,7 @@
 		window.onbeforeunload = ()=> {refresh=true; return undefined};
 	}
 	
-	$: if (refresh) {
-		setTimeout(()=>lazyloadInstance.update(),100);
-		refresh=false;
-	}
-	
+	$: $page.params, lazyloadInstance && setTimeout(()=>lazyloadInstance.update(),100);
 	
 	onMount(()=>{ lazyloadInstance.update() });
 
@@ -160,7 +156,7 @@
 			<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img)}"  alt="">
 		</svelte:fragment>
 		<svelte:fragment slot="bloglink">
-			<a href="/articles/{ post.slug }" class="block mt-2" on:click={()=>refresh=true}>
+			<a href="/articles/{ post.slug }" class="block mt-2" sveltekit:prefetch>
 				<p class="text-xl font-semibold text-gray-900">
 				  {post.title}
 				</p>
