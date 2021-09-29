@@ -31,11 +31,11 @@
 	import Card from '$lib/Card.svelte';
 	import CardWrapper from '$lib/CardWrapper.svelte';
 	import { toLowRes } from '$lib/utils';
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import ContentImage from '$lib/ContentImage.svelte'
 	import SvelteSeo from "svelte-seo";
 	import lazyload from 'vanilla-lazyload';
-	import { onMount, tick } from 'svelte'
+	import { onMount } from 'svelte'
 	import { page } from '$app/stores';
 	import marked from 'marked';
 	export let post, posts;
@@ -52,7 +52,6 @@
 	marked.use({ renderer });
 	
 	let lazyloadInstance;
-	let refresh;
 	if (browser) {
 		lazyloadInstance = new lazyload();
 		window.onbeforeunload = ()=> {refresh=true; return undefined};
@@ -74,10 +73,14 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="relative bg-indigo-800">
 	<div class="absolute inset-0">
-	  <img class="lazy w-full h-full object-cover" 
-	  data-src="{toLowRes(post.featured_image.thumbnail, 800)}" 
-	  alt="{post.featured_image.alt}"
-	  >
+		<picture>
+			<source
+			  type="image/webp"
+			  data-srcset="{toLowRes(post.featured_image.thumbnail, {webp : true, res:800})}"
+			  data-sizes="100vw"
+			/>
+			<img class="lazy w-full h-full object-cover" alt="{post.featured_image.alt}"  width="600" height="400" data-src="{toLowRes(post.featured_image.thumbnail, {res: 800})}" />
+		  </picture>
 	  <div class="absolute inset-0 bg-indigo-800 mix-blend-multiply" aria-hidden="true"></div>
 	</div>
 	<div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
@@ -110,11 +113,10 @@
 		  {#if idx % 2 === 0}
 			<ContentImage {contenu}>
 				<svelte:fragment slot="imageslot">
-				<img class="lazy rounded-lg shadow-lg object-cover object-center" 
-					alt="{contenu.images[0].alt_section}"
-					data-src="{toLowRes(contenu.images[0].image_section)}" 
-					width="1184" height="1376"
-				>	
+				<picture>
+					<source type="image/webp" data-srcset="{toLowRes(contenu.images[0].image_section, {webp : true})}" data-sizes="100vw" />
+					<img class="lazy rounded-lg shadow-lg object-cover object-center" alt="{contenu.images[0].alt_section}" data-src="{toLowRes(contenu.images[0].image_section)}" width="1184" height="1376" >	
+				</picture>
 				</svelte:fragment>
 			</ContentImage>
 		  {:else}
@@ -129,11 +131,10 @@
 			{#if idx % 2 !== 0}
 			<ContentImage {contenu}>
 				<svelte:fragment slot="imageslot">
-				<img class="lazy rounded-lg shadow-lg object-cover object-center" 
-					alt="{contenu.images[0].alt_section}"
-					data-src="{toLowRes(contenu.images[0].image_section)}" 
-					width="1184" height="1376"
-				>	
+				<picture>
+					<source type="image/webp" data-srcset="{toLowRes(contenu.images[0].image_section, {webp : true})}" data-sizes="100vw"/>
+					<img class="lazy rounded-lg shadow-lg object-cover object-center"  alt="{contenu.images[0].alt_section}" data-src="{toLowRes(contenu.images[0].image_section)}" width="1184" height="1376">	
+				</picture>
 				</svelte:fragment>
 			</ContentImage>
 		  {:else}
@@ -157,7 +158,8 @@
 			<picture>
 				<source
 				  type="image/webp"
-				  data-src="{toLowRes(post.img, true)}"
+				  data-srcset="{toLowRes(post.img, {webp : true})}"
+				  data-sizes="100vw"
 				/>
 				<img class="lazy h-48 w-full object-cover" alt="{post.title}"  width="600" height="400" data-src="{toLowRes(post.img)}" />
 			  </picture>
