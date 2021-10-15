@@ -19,10 +19,10 @@ export const getAllPosts = (tableOnly) => {
 			return tableOnly ? { 
 				title: mattered.data.title, 
 				slug : mattered.data.slug,
-				img : mattered.data.featured_image.thumbnail, 
+				img : mattered.data.featured_image?.thumbnail || "", 
 				chapo :  mattered.data.chapocontent,
 				date : mattered.data.date,
-				thematique : mattered.data.thematique
+				thematique : mattered.data.thematique,
 			} : mattered.data;
 		});
 	} catch (e) {

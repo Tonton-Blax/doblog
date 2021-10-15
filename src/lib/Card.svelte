@@ -25,7 +25,7 @@
 		</p>
 		<div class="flex space-x-1 text-sm text-gray-500">
 			<time datetime="2020-02-12">
-			{new Date(date).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+			{date && new Date(date).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
 			</time>
 			<span aria-hidden="true">
 			&middot;

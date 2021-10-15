@@ -60,6 +60,7 @@
 	}
 
 	const refreshPage = async (href) => {
+		console.log(posts);
 		await invalidate('articles.json')
 		await goto('/articles');
 	}
@@ -77,10 +78,11 @@
 	
 	<CardWrapper>
 		{#each posts as post, idx}
+		{#if post.chapo}
 		<div transition:fly={{y:500, delay : idx * 100}}>
 		<Card date={post.date}>
 			<svelte:fragment slot="thumbnail">
-				<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img)}"  alt="">
+				<img class="lazy h-48 w-full object-cover" data-src="{toLowRes(post.img || "")}"  alt="">
 			</svelte:fragment>
 			<svelte:fragment slot="bloglink">
 				<a sveltekit:prefetch href="articles/{ post.slug }" class="block mt-2">
@@ -99,6 +101,7 @@
 			</svelte:fragment>
 		</Card>
 		</div>
+		{/if}
 		{/each}
 	</CardWrapper>
 {:else}

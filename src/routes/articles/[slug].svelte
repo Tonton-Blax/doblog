@@ -76,10 +76,10 @@
 		<picture>
 			<source
 			  type="image/webp"
-			  data-srcset="{toLowRes(post.featured_image.thumbnail, {webp : true, res:800})}"
+			  data-srcset="{toLowRes(post.featured_image?.thumbnail || "", {webp : true, res:800})}"
 			  data-sizes="100vw"
 			/>
-			<img class="lazy w-full h-full object-cover" alt="{post.featured_image.alt}"  width="600" height="400" data-src="{toLowRes(post.featured_image.thumbnail, {res: 800})}" />
+			<img class="lazy w-full h-full object-cover" alt="{post.featured_image.alt}"  width="600" height="400" data-src="{toLowRes(post.featured_image?.thumbnail || "", {res: 800})}" />
 		  </picture>
 	  <div class="absolute inset-0 bg-indigo-800 mix-blend-multiply" aria-hidden="true"></div>
 	</div>
