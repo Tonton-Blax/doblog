@@ -6,19 +6,19 @@ specifiers:
   '@sveltejs/adapter-static': ^1.0.0-next.19
   '@sveltejs/kit': next
   '@tailwindcss/typography': ^0.4.1
-  autoprefixer: ^10.3.5
+  autoprefixer: ^10.3.7
   cookie: ^0.4.1
   cssnano: ^5.0.8
   gray-matter: ^4.0.3
   marked: ^3.0.7
-  postcss: ^8.3.7
+  postcss: ^8.3.9
   postcss-load-config: ^3.1.0
   sharp: ^0.29.1
-  svelte: ^3.43.0
-  svelte-intersection-observer: ^0.8.0
-  svelte-preprocess: ^4.9.5
-  svelte-seo: ^1.3.0
-  tailwindcss: ^2.2.15
+  svelte: ^3.43.2
+  svelte-intersection-observer: ^0.9.0
+  svelte-preprocess: ^4.9.8
+  svelte-seo: ^1.3.1
+  tailwindcss: ^2.2.17
   vanilla-lazyload: ^17.5.0
 
 dependencies:
@@ -40,7 +40,7 @@ devDependencies:
   postcss-load-config: 3.1.0
   sharp: 0.29.1
   svelte: 3.43.2
-  svelte-intersection-observer: 0.8.0
+  svelte-intersection-observer: 0.9.0
   svelte-preprocess: 4.9.8_6791a88092a7dfc8f03ced7bd61bb4e4
   tailwindcss: 2.2.17_96f83969316717847b3edf58a3f353f3
 
@@ -2176,8 +2176,8 @@ packages:
       svelte: 3.43.2
     dev: true
 
-  /svelte-intersection-observer/0.8.0:
-    resolution: {integrity: sha512-TyCrgv8bxnMczQrswqvgtzlvtJK5wo/X23mSypNBCxXfVOiQgXIXNPf06E+BLTQI3jrrtwFz0WLfzDjBa56ppA==}
+  /svelte-intersection-observer/0.9.0:
+    resolution: {integrity: sha512-eCEcMNk20gHIRsz34p5ZH3qx0uow90L5QYvQ74Os3+3TIT1/YZNtQ2VTvK2eAnJfnpE2zurQFWYpk/G6xM+WYA==}
     dev: true
 
   /svelte-preprocess/4.9.8_6791a88092a7dfc8f03ced7bd61bb4e4:
